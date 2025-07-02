@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    container_name: imersao-devops-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Monta o diretório atual no contêiner para live-reloading
+      # e para persistir o banco de dados SQLite.
+      - .:/app
+    # O comando do readme.md inclui --reload, que é ótimo para desenvolvimento.
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
